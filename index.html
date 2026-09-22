@@ -1,23 +1,1405 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
+
+
+    <!-- JSON-LD Structured Data for Search Engines and AI Crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://tire.reliabledone.com/#website",
+          "url": "https://tire.reliabledone.com",
+          "name": "스마트 타이어계산기 플랫폼",
+          "description": "2026년 기준 전국 자동차 타이어 규격별 견적 산출 및 렌탈 비교 견적 솔루션",
+          "publisher": {
+            "@type": "Organization",
+            "name": "타이어테크 리서치 랩"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://tire.reliabledone.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://tire.reliabledone.com/calculator#app",
+          "name": "지능형 실시간 타이어계산기",
+          "url": "https://tire.reliabledone.com/calculator",
+          "applicationCategory": "AutomotiveApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KRW",
+            "lowPrice": "45000",
+            "highPrice": "650000",
+            "offerCount": "120"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://tire.reliabledone.com/calculator#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "타이어계산기는 어떠한 원리로 일시불 구매와 렌탈 요금을 비교하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "타이어계산기는 사용자가 입력한 단면폭, 편평비, 림 직경 규격을 바탕으로 현재 전국 대리점 및 인터넷 최저가 데이터베이스를 조회합니다. 여기에 4본 기준 장착 공임비, 휠얼라인먼트 비용, 위치교환 서비스 비용과 넥센 엔페라, 한국, 금호 등 주요 브랜드의 12개월 및 36개월 렌탈 약정 요금, 제휴카드 청구할인 금액을 역산하여 총 소요 비용의 차이점을 도출합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "타이어 렌탈 서비스를 이용할 때 발생하는 위약금과 환불 규정은 어떻게 계산되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "타이어 렌탈은 금융 및 렌탈 계약의 성격을 지니므로 계약 기간 내 중도 해지 시 잔여 렌탈료의 일정 비율에 해당하는 위약금과 등록비, 제공받은 케어 서비스 실비가 청구될 수 있습니다. 단, 1년 또는 무약정 성격의 특정 프로모션 요금제나 초기 14일 이내 소비자의 정당한 청약철회 사유 발생 시 관계 법령에 따라 위약금이 면제되거나 안분 정산되어 환불 처리됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "2026년 타이어 시장에서 전기차 전용 타이어 교체 시 추가 비용이 발생하는 이유는 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "전기차는 내연기관 차량에 비해 배터리 탑재로 인한 공차중량이 20퍼센트 이상 무겁고 초반 최대토크가 즉각적으로 전달되어 타이어 마모 속도가 현저히 빠릅니다. 이에 따라 높은 하중지수 등급, 고하중 지지 사이드월, 저소음 흡음재 설계가 필수적이므로 일반 타이어 대비 평균 15퍼센트에서 30퍼센트가량 가격표 기준 예상 비용이 높게 형성되어 있습니다."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://tire.reliabledone.com/calculator#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "홈",
+              "item": "https://tire.reliabledone.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "스마트 분석 솔루션",
+              "item": "https://tire.reliabledone.com/solution"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "타이어계산기",
+              "item": "https://tire.reliabledone.com/calculator"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-soft: #eff6ff;
+            --secondary: #0f766e;
+            --secondary-light: #14b8a6;
+            --secondary-soft: #f0fdfa;
+            --accent: #d97706;
+            --accent-soft: #fffbeb;
+            --surface: #ffffff;
+            --background: #f8fafc;
+            --border: #e2e8f0;
+            --border-focus: #93c5fd;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --text-sub: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 6px 18px -3px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.1);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.8;
+            letter-spacing: -0.015em;
+            word-break: keep-all;
+        }
+
+        a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header UI */
+        header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 76px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+        }
+
+        .brand-desc {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background-color: var(--primary-soft);
+            text-decoration: none;
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 48px 0 36px 0;
+            background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            line-height: 1.35;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 820px;
+            margin: 0 auto 20px auto;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background-color: var(--secondary-soft);
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid #99f6e4;
+            margin-bottom: 14px;
+        }
+
+        /* Card Component Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin: 36px 0;
+        }
+
+        @media (min-width: 992px) {
+            .grid-layout-2 {
+                grid-template-columns: 1.15fr 0.85fr;
+            }
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 32px;
+        }
+
+        .card-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 18px;
+            margin-bottom: 24px;
+        }
+
+        .card-header h2 {
+            font-size: 1.55rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .card-header p {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin-top: 6px;
+        }
+
+        /* Calculator Form */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .form-row-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .form-row-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .input-control {
+            width: 100%;
+            height: 48px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background-color: #ffffff;
+            color: var(--text-dark);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        select.input-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            padding-right: 38px;
+        }
+
+        .calc-btn {
+            background-color: var(--primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            border-radius: var(--radius-md);
+            height: 52px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        .calc-btn:hover {
+            background-color: #172554;
+        }
+
+        .calc-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Result Box */
+        .result-panel {
+            background-color: var(--primary-soft);
+            border: 1px solid #bfdbfe;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .result-headline {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .result-item {
+            background-color: var(--surface);
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid #dbeafe;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-top: 4px;
+        }
+
+        .result-subtext {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* Bar Chart Simulation */
+        .chart-container {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .bar-group {
+            margin-bottom: 18px;
+        }
+
+        .bar-label-wrap {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .bar-track {
+            height: 14px;
+            background-color: #e2e8f0;
+            border-radius: 7px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 7px;
+            transition: width 0.5s ease;
+        }
+
+        .fill-blue { background-color: var(--primary-light); }
+        .fill-teal { background-color: var(--secondary-light); }
+        .fill-amber { background-color: var(--accent); }
+
+        /* Tables */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            text-align: left;
+            background-color: var(--surface);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            padding: 14px 16px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .highlight-val {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Long Content Typography */
+        .content-section {
+            background-color: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .content-section h2 {
+            font-size: 1.7rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+            letter-spacing: -0.02em;
+        }
+
+        .content-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            letter-spacing: -0.015em;
+        }
+
+        .content-section h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p {
+            margin-bottom: 18px;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            text-align: justify;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+            font-size: 0.96rem;
+        }
+
+        .info-callout {
+            background-color: var(--secondary-soft);
+            border-left: 4px solid var(--secondary);
+            padding: 18px 22px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 24px 0;
+        }
+
+        .info-callout p {
+            margin: 0;
+            color: #134e4a;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* External Trusted Links */
+        .external-links-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .ext-link-card {
+            display: inline-flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+
+        .ext-link-card:hover {
+            border-color: var(--primary-light);
+            background-color: var(--primary-soft);
+            color: var(--primary);
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 14px;
+            overflow: hidden;
+            background-color: var(--surface);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 18px 22px;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+
+        .faq-answer {
+            padding: 0 22px 20px 22px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-toggle-icon {
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--text-sub);
+        }
+
+        /* Keyword Tag Cloud */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tag-item {
+            background-color: #f1f5f9;
+            color: var(--text-sub);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tag-item:hover {
+            background-color: var(--primary-soft);
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 48px 0;
+            margin-top: 60px;
+            font-size: 0.88rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin-bottom: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="brand">
+                <a href="#calculator-app" class="brand-title">타이어계산기</a>
+                <span class="brand-desc">2026 규격별 견적 및 렌탈 비교 분석 시스템</span>
+            </div>
+            <nav aria-label="메인 탐색 메뉴">
+                <ul>
+                    <li><a href="#calculator-app">스마트 계산기</a></li>
+                    <li><a href="#price-table">가격표 및 등급표</a></li>
+                    <li><a href="#rental-comparison">렌탈 요금제 비교</a></li>
+                    <li><a href="#info-center">심층 정보센터</a></li>
+                    <li><a href="#faq-section">자주 묻는 질문</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <span class="badge-pill">2026 연간 타이어 시세 정밀 데이터 탑재</span>
+            <h1>타이어계산기 기반 실시간 최저가 견적 및 렌탈 요금표 분석</h1>
+            <p>규격 하나로 시작하는 합리적인 카라이프. 전국 지역별 공임비와 다이렉트 온라인 최저가, 12개월 무약정 및 장기 렌탈 요금제까지 투명하게 비교 분석합니다.</p>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- Calculator Application Section -->
+        <section id="calculator-app" class="card" style="margin-top: 36px;">
+            <div class="card-header">
+                <h2>지능형 타이어계산기 견적 산출 시스템</h2>
+                <p>차량에 장착된 타이어의 단면폭, 편평비, 휠 인치를 선택하시면 2026년 실시간 공임 포함 예상 일시불 구매 비용과 월 렌탈 요금표를 즉시 계산해 드립니다.</p>
+            </div>
+
+            <form id="tireCalculatorForm" onsubmit="event.preventDefault(); calculateTireQuote();">
+                <div class="form-row form-row-3">
+                    <div class="input-group">
+                        <label for="tireWidth">단면폭 (mm)</label>
+                        <select id="tireWidth" class="input-control" required>
+                            <option value="195">195 mm (모닝, 레이, 캐스퍼)</option>
+                            <option value="205">205 mm (아반떼, K3 기본형)</option>
+                            <option value="215">215 mm (아반떼 N라인, 코나, 셀토스)</option>
+                            <option value="225">225 mm (쏘나타, K5, 니로)</option>
+                            <option value="235">235 mm (싼타페, 투싼, 스포티지)</option>
+                            <option value="245" selected>245 mm (그랜저, K8, G80 전륜)</option>
+                            <option value="255">255 mm (카니발, 팰리세이드)</option>
+                            <option value="275">275 mm (G80 후륜, 스팅어 3.3T 후륜, BMW 5시리즈 후륜)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="tireAspect">편평비 (시리즈)</label>
+                        <select id="tireAspect" class="input-control" required>
+                            <option value="35">35 시리즈 (고성능 스포츠)</option>
+                            <option value="40">40 시리즈 (스포츠 프리미엄 세단)</option>
+                            <option value="45" selected>45 시리즈 (중대형 프리미엄 세단)</option>
+                            <option value="50">50 시리즈 (준중형 세단 및 소형 SUV)</option>
+                            <option value="55">55 시리즈 (중형 도심형 SUV)</option>
+                            <option value="60">60 시리즈 (패밀리 대형 SUV)</option>
+                            <option value="65">65 시리즈 (경차 및 상용)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="tireWheel">휠 인치 (Diameter)</label>
+                        <select id="tireWheel" class="input-control" required>
+                            <option value="15">15 인치</option>
+                            <option value="16">16 인치</option>
+                            <option value="17">17 인치</option>
+                            <option value="18">18 인치</option>
+                            <option value="19" selected>19 인치</option>
+                            <option value="20">20 인치</option>
+                            <option value="21">21 인치</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row form-row-3">
+                    <div class="input-group">
+                        <label for="tireBrand">브랜드 및 제품 등급</label>
+                        <select id="tireBrand" class="input-control" required>
+                            <option value="standard">국산 스탠다드 (금호 TA21 / 넥센 AH8 수준)</option>
+                            <option value="premium" selected>국산 컴포트 프리미엄 (한국 벤투스 S2 AS / 금호 마제스티9 / 넥센 엔페라 슈프림)</option>
+                            <option value="suv">국산 전용 SUV 올시즌 (금호 크루젠 HP71 / 한국 다이나프로 HPX)</option>
+                            <option value="import">수입 프리미엄 올웨더 (미쉐린 CC2 / 콘티넨탈 DWS06 Plus)</option>
+                            <option value="ev">전기차 전용 고효율 저소음 (한국 아이온 에보 / 금호 마제스티9 EV)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="tireCount">교체 수량</label>
+                        <select id="tireCount" class="input-control" required>
+                            <option value="2">2본 교체 (전륜 또는 후륜)</option>
+                            <option value="4" selected>4본 전체 교체 (권장 패키지)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="cardDiscount">제휴카드 할인 적용</label>
+                        <select id="cardDiscount" class="input-control">
+                            <option value="0">적용 안함 (기본 요금)</option>
+                            <option value="13000" selected>전월 실적 30만원 이상 (월 13,000원 할인)</option>
+                            <option value="16000">전월 실적 70만원 이상 (월 16,000원 할인)</option>
+                            <option value="20000">전월 실적 100만원 이상 (월 20,000원 할인)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="calc-btn">타이어계산기 견적 산출 및 렌탈료 비교 분석 실행</button>
+            </form>
+
+            <div id="quoteResult" class="result-panel">
+                <div class="result-headline">산출된 2026년 타이어 예상 금액 분석 결과 리포트</div>
+                <div class="result-grid">
+                    <div class="result-item">
+                        <div class="result-label">일시불 총 예상 구매비용 (공임포함)</div>
+                        <div id="resTotalBuy" class="result-value">640,000 원</div>
+                        <div class="result-subtext">장착비, 밸런스비, 폐타이어 처리비 포함</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">기본 월 렌탈료 (36개월 약정)</div>
+                        <div id="resBaseRental" class="result-value">21,900 원</div>
+                        <div class="result-subtext">초기 등록비 0원 기준 표준 요금</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">제휴카드 적용 최종 실납부금</div>
+                        <div id="resCardRental" class="result-value">8,900 원</div>
+                        <div class="result-subtext">제휴 신용카드 청구할인 적용 시</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">렌탈 시 부가 케어 서비스 가치</div>
+                        <div id="resCareValue" class="result-value">180,000 원 상당</div>
+                        <div class="result-subtext">얼라인먼트 1회, 위치교환 2회, 방문점검 무상</div>
+                    </div>
+                </div>
+                <p id="resSummaryNote" style="font-size: 0.92rem; color: var(--primary); font-weight: 600; margin: 0;">
+                    선택 규격(245/45R19) 기준, 연간 주행거리가 15,000km 이상이며 정기적인 점검 관리를 원하실 경우 제휴카드를 연계한 36개월 렌탈 계약이 일시불 구매 대비 약 12퍼센트의 체감 경제성 우위를 나타냅니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- Dynamic Visualization Chart -->
+        <section class="card">
+            <div class="card-header">
+                <h2>타이어 취득 방식별 총 유지 비용 시뮬레이션 지표</h2>
+                <p>3년(36개월) 동안 타이어 4본을 운용할 때 발생하는 총비용(장착, 얼라인먼트, 정기 점검 포함)을 객관적인 수치로 비교한 그래프입니다.</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="bar-group">
+                    <div class="bar-label-wrap">
+                        <span>오프라인 오프라인 대리점 일시불 구매 (장착 및 정비공임 별도)</span>
+                        <span class="highlight-val">약 780,000 원</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill fill-amber" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label-wrap">
+                        <span>인터넷 다이렉트 온라인 주문 후 장착점 공임 결제 (배송비 포함)</span>
+                        <span class="highlight-val">약 660,000 원</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill fill-blue" style="width: 72%;"></div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label-wrap">
+                        <span>타이어 렌탈 표준 요금제 (36개월 정기 방문점검 및 얼라인먼트 포함)</span>
+                        <span class="highlight-val">약 710,000 원</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill fill-teal" style="width: 77%;"></div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label-wrap">
+                        <span>타이어 렌탈 제휴카드 프로모션 극대화 적용 시</span>
+                        <span class="highlight-val">약 320,000 원</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill fill-teal" style="width: 35%;"></div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-sub); text-align: right;">산출 기준: 245/45R19 국산 컴포트 프리미엄급 4본 세트 기준 (2026년 평균 시세)</p>
+        </section>
+
+        <!-- National Regional Analysis & Models Table -->
+        <section id="price-table" class="card">
+            <div class="card-header">
+                <h2>전국 주요 권역별 인기 차종 타이어 렌탈 및 교체 가격표 요금표</h2>
+                <p>서울부터 제주까지 전국 전문점 및 다이렉트 성지 센터를 기준으로 집계된 모델별 예상 평균 교체 견적표입니다.</p>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>지역 권역</th>
+                            <th>대표 차종 모델</th>
+                            <th>표준 장착 규격</th>
+                            <th>추천 브랜드 및 라인업</th>
+                            <th>일시불 교체 예상액 (4본)</th>
+                            <th>렌탈 요금제 (월/제휴시)</th>
+                            <th>무상 정비 케어 혜택</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>서울 강남 송파 강동</td>
+                            <td>제네시스 G80</td>
+                            <td>245/45R19 (전)</td>
+                            <td>미쉐린 프라이머시 투어 A/S</td>
+                            <td>980,000 원</td>
+                            <td>월 14,900 원</td>
+                            <td>얼라인먼트 1회, 방문 무상점검</td>
+                        </tr>
+                        <tr>
+                            <td>경기 수원 성남 용인</td>
+                            <td>그랜저 GN7</td>
+                            <td>245/45R19</td>
+                            <td>넥센 엔페라 슈프림</td>
+                            <td>620,000 원</td>
+                            <td>월 7,900 원</td>
+                            <td>엔진오일 교환 쿠폰, 위치교환 2회</td>
+                        </tr>
+                        <tr>
+                            <td>인천 부천 시흥 안산</td>
+                            <td>쏘렌토 하이브리드</td>
+                            <td>235/55R19</td>
+                            <td>한국 다이나프로 HPX</td>
+                            <td>680,000 원</td>
+                            <td>월 8,900 원</td>
+                            <td>휠밸런스 무상, 타이어 파손보상</td>
+                        </tr>
+                        <tr>
+                            <td>부산 해운대 동래 금정</td>
+                            <td>카니발 KA4</td>
+                            <td>235/55R19</td>
+                            <td>금호 크루젠 HP71</td>
+                            <td>650,000 원</td>
+                            <td>월 8,500 원</td>
+                            <td>조기마모 보증제, 위치교환 2회</td>
+                        </tr>
+                        <tr>
+                            <td>대구 수성 달서 북구</td>
+                            <td>아반떼 CN7</td>
+                            <td>205/55R16</td>
+                            <td>금호 솔루스 TA21</td>
+                            <td>380,000 원</td>
+                            <td>월 3,900 원</td>
+                            <td>펑크 무상수리, 밸런스 교정</td>
+                        </tr>
+                        <tr>
+                            <td>대전 유성 서구 중구</td>
+                            <td>싼타페 MX5</td>
+                            <td>245/45R20</td>
+                            <td>넥센 엔페라 프리미어 SUV</td>
+                            <td>720,000 원</td>
+                            <td>월 9,900 원</td>
+                            <td>얼라인먼트 1회, 렌탈 등록비 면제</td>
+                        </tr>
+                        <tr>
+                            <td>광주 광산 북구 서구</td>
+                            <td>K5 DL3</td>
+                            <td>235/45R18</td>
+                            <td>한국 벤투스 S2 AS</td>
+                            <td>580,000 원</td>
+                            <td>월 6,900 원</td>
+                            <td>위치교환 2회, 비대면 방문 장착</td>
+                        </tr>
+                        <tr>
+                            <td>울산 남구 중구 북구</td>
+                            <td>투싼 NX4</td>
+                            <td>235/60R18</td>
+                            <td>금호 크루젠 프리미엄</td>
+                            <td>560,000 원</td>
+                            <td>월 6,500 원</td>
+                            <td>에어밸브 전원 신품교체, 점검</td>
+                        </tr>
+                        <tr>
+                            <td>충북 청주 및 충남 천안</td>
+                            <td>스포티지 NQ5</td>
+                            <td>235/55R19</td>
+                            <td>넥센 엔페라 로디안 GTX</td>
+                            <td>610,000 원</td>
+                            <td>월 7,500 원</td>
+                            <td>파손 무상 교환권, 정밀 밸런스</td>
+                        </tr>
+                        <tr>
+                            <td>전북 전주 익산 및 군산</td>
+                            <td>스팅어 마이스터</td>
+                            <td>255/35R19 (후)</td>
+                            <td>미쉐린 파일럿 스포츠 4</td>
+                            <td>1,050,000 원</td>
+                            <td>월 16,900 원</td>
+                            <td>고속 진동 밸런스 무상, 점검</td>
+                        </tr>
+                        <tr>
+                            <td>경북 포항 구미 경주</td>
+                            <td>모닝 어반</td>
+                            <td>175/65R14</td>
+                            <td>넥센 마일캡 2</td>
+                            <td>260,000 원</td>
+                            <td>월 1,900 원</td>
+                            <td>장착 공임 전액 무료 프로모션</td>
+                        </tr>
+                        <tr>
+                            <td>경남 창원 김해 진주</td>
+                            <td>테슬라 모델Y</td>
+                            <td>255/45R19</td>
+                            <td>한국 아이온 에보 SUV (전기차 전용)</td>
+                            <td>920,000 원</td>
+                            <td>월 13,900 원</td>
+                            <td>흡음재 전용 점검, 얼라인먼트 1회</td>
+                        </tr>
+                        <tr>
+                            <td>강원 원주 춘천 강릉</td>
+                            <td>BMW 5시리즈</td>
+                            <td>245/45R18</td>
+                            <td>콘티넨탈 프로콘택트 GX</td>
+                            <td>940,000 원</td>
+                            <td>월 14,200 원</td>
+                            <td>수입차 전용 휠얼라인먼트 연계</td>
+                        </tr>
+                        <tr>
+                            <td>제주 제주시 서귀포시</td>
+                            <td>벤츠 E클래스</td>
+                            <td>245/40R19</td>
+                            <td>피렐리 친투라토 P7 올시즌</td>
+                            <td>1,120,000 원</td>
+                            <td>월 17,900 원</td>
+                            <td>도서산간 추가 배송비 전액 면제</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- In-depth Information Center (Massive Text Content) -->
+        <article id="info-center" class="content-section">
+            <h2>타이어계산기 종합 테크니컬 리포트 및 2026 경제적 선택 가이드</h2>
+            
+            <p>
+                자동차의 수많은 소모품 중 노면과 직접 맞닿아 차량의 가속력, 제동력, 승차감, 연비 효율을 결정하는 단 하나의 부품은 바로 타이어입니다. 2026년 고물가 및 원자재비 인상 기조 속에서 타이어 교체 주기를 맞이한 운전자들에게 가장 핵심적인 화두는 합리적인 가격에 최상의 성능을 갖춘 타이어를 찾아내는 것입니다. 오늘날 인터넷 포털과 모바일 앱, 그리고 다양한 커뮤니티인 보배드림, 에펨코리아(펨코), 디시인사이드 자동차 갤러리 등에서는 매일 수많은 교체 내돈내산 후기와 최저가 좌표, 성지 매장 추천 질문이 쏟아지고 있습니다. 이와 같은 방대한 정보의 홍수 속에서 객관적인 잣대를 제공하기 위해 고안된 것이 바로 지능형 타이어계산기 플랫폼입니다.
+            </p>
+
+            <h3>1. 타이어 규격 판독법과 성능 등급표의 기초 구조</h3>
+            <p>
+                타이어계산기를 올바르게 활용하여 오차 없는 견적을 산출하기 위해서는 자신의 차량 휠하우스에 적합한 타이어 규격을 정확히 읽어낼 수 있어야 합니다. 차량 운전석 도어를 열었을 때 B필러 하단에 부착된 라벨이나 타이어 측면의 사이드월을 살펴보면 245/45R19와 같은 일련의 영문과 숫자의 조합을 확인할 수 있습니다. 
+            </p>
+            <p>
+                여기서 첫 번째 숫자 245는 지면과 닿는 타이어의 트레드 단면폭을 밀리미터 단위로 나타낸 수치입니다. 단면폭이 넓어질수록 노면 접지 면적이 증가하여 고속 주행 안정성과 코너링 제동 성능은 비약적으로 향상되지만, 회전 저항이 커져 연비가 다소 감소하고 노면 소음이 커질 수 있습니다. 두 번째 숫자 45는 단면폭에 대한 타이어 옆면 높이의 비율을 뜻하는 편평비입니다. 즉, 245밀리미터의 45퍼센트에 해당하는 약 110.25밀리미터가 타이어의 옆면 두께가 됩니다. 편평비가 낮을수록 스포츠 드라이빙에 유리한 민첩한 핸들링을 제공하며, 편평비가 높을수록 충격 흡수력이 우수하여 안락한 승차감을 도모할 수 있습니다.
+            </p>
+            <p>
+                영문 알파벳 R은 래디얼(Radial) 구조를 의미하며 이는 현대 승용차 타이어의 표준 제조 공법입니다. 마지막 숫자 19는 휠의 테두리 직경을 인치 단위로 나타냅니다. 여기에 덧붙여 타이어 측면에는 98Y, 102V와 같은 하중지수(Load Index)와 속도기호(Speed Symbol), 그리고 내마모성을 나타내는 트레드웨어(Treadwear) 수치가 기재되어 있습니다. 트레드웨어가 500 이상인 제품은 마일리지 수명이 매우 길어 경제성이 높고, 300 이하인 고성능 썸머 타이어는 강력한 접지력을 발휘하는 대신 교체 주기가 빠릅니다. 타이어계산기는 이러한 물리적 규격 데이터와 복합적인 지표를 알고리즘화하여 사용자의 주행 스타일에 가장 부합하는 제품군을 필터링합니다.
+            </p>
+
+            <h3>2. 타이어 일시불 구매 vs 타이어 렌탈 요금제 심층 비교 분석</h3>
+            <p>
+                최근 3년 사이 자동차 애프터마켓에서 가장 급격한 패러다임 변화를 겪고 있는 분야가 바로 타이어 유통 방식입니다. 과거에는 카센터나 대리점에 방문하여 정가표에 따라 일시불로 구매하는 것이 유일한 방식이었으나, 현재는 인터넷 오픈마켓 다이렉트 주문 후 장착 나라 등의 공임 전문점을 이용하는 방식과, 넥센타이어의 넥스트레벨을 필두로 시작된 정기 구독형 타이어 렌탈 서비스가 팽팽하게 맞서고 있습니다. 운전자라면 각 방식의 장단점과 실질적인 비용 차이점을 명확히 인지해야 합니다.
+            </p>
+
+            <h4>일시불 구매 방식의 메커니즘과 장단점</h4>
+            <p>
+                일시불 구매의 가장 강력한 장점은 구매 시점에 모든 결제가 종결되므로 향후 매월 지출되는 고정 비용 부담이나 약정 기간에 얽매일 필요가 없다는 점입니다. 특히 인터넷 온라인 최저가 검색에 능숙한 소비자라면 오픈마켓 특가, 카드사 청구할인, 쿠폰 이벤트를 종합하여 시중 오프라인 정비소 대비 20퍼센트에서 많게는 35퍼센트 이상 저렴한 가격에 타이어 본품을 확보할 수 있습니다. 
+            </p>
+            <p>
+                그러나 명확한 단점도 존재합니다. 첫째, 인터넷에서 배송받은 타이어를 들고 협력 정비소에 찾아가 장착할 때 발생하는 공임비(개당 15,000원~30,000원), 휠밸런스 비용, 휠얼라인먼트 점검비(50,000원~80,000원), 기존 폐타이어 처리비용 등이 별도로 청구되어 최종 지출 금액이 초기 계산보다 늘어나는 경우가 허다합니다. 둘째, 온라인 배송 과정에서 생산 주차(DOT)가 지나치게 오래된 재고 상품이 배송되거나 제품 불량 발생 시 소비자가 직접 교환 및 반품 절차를 증명해야 하는 번거로움이 따릅니다.
+            </p>
+
+            <h4>타이어 렌탈 구독 서비스의 구조와 혜택 분석</h4>
+            <p>
+                반면 타이어 렌탈은 초기 목돈 지출 없이 12개월, 24개월, 36개월, 48개월 등 원하는 약정 기간을 설정하여 매월 일정 요금을 납부하는 시스템입니다. 이 방식의 최대 장점은 초기 계약금이나 등록비 부담 없이 프리미엄급 고성능 타이어를 즉시 장착할 수 있다는 뛰어난 현금 유동성 확보에 있습니다. 
+            </p>
+            <p>
+                더욱 주목할 점은 렌탈 패키지에 기본 포함되어 있는 프리미엄 무상 케어 서비스입니다. 일반적으로 4본 렌탈 계약 시 휠얼라인먼트 1회 무상 교정(약 7만 원 상당), 1만km 주기마다 제공되는 타이어 위치교환 2회 무상 서비스(약 4만 원 상당), 전문 매니저가 거주지로 직접 방문하여 공기압과 마모도를 점검해 주는 비대면 방문케어 서비스가 무상으로 제공됩니다. 무엇보다 주행 중 도로 파손이나 못 찔림, 사이드월 찢어짐 등으로 인해 타이어가 조기 파손되었을 때 동일한 새 타이어로 1:1 무상 교체해 주는 파손 보상 제도는 일시불 구매자가 누릴 수 없는 절대적인 특권입니다.
+            </p>
+
+            <div class="info-callout">
+                <p>
+                    렌탈 시 유의해야 할 주의사항: 타이어 렌탈 계약은 중간에 마음대로 해지할 경우 잔여 약정 기간 요금에 대한 위약금 및 렌탈 등록비 청구가 발생할 수 있습니다. 따라서 차량을 1년 이내에 매각하거나 단기 리스 반납을 앞둔 상태라면 12개월 단기 약정 요금제나 무약정 플랜을 선택해야 위약금 손실을 완벽히 방지할 수 있습니다.
+                </p>
+            </div>
+
+            <h3>3. 제휴카드 할인 신공을 통한 최저가 공략과 경제성 극대화</h3>
+            <p>
+                보배드림이나 펨코 등의 자동차 커뮤니티에서 타이어 렌탈을 실제 이용한 오너들의 이른바 내돈내산 후기 성지 글을 살펴보면, 공통적으로 강조하는 핵심 전략이 바로 제휴 신용카드 연계입니다. 넥센, 한국, 금호 등 주요 타이어 렌탈 제휴카드는 전월 실적 조건(일반적으로 30만 원 이상)을 충족할 경우 매월 13,000원에서 최대 20,000원까지 렌탈료를 청구할인해 주는 강력한 프로모션을 상시 운영하고 있습니다.
+            </p>
+            <p>
+                예를 들어, 그랜저 차량용 19인치 최고급 컴포트 타이어 4본의 월 렌탈 요금이 21,900원일 때, 생활비 카드(통신비, 관리비, 주유비 결제)를 해당 제휴카드로 변경하여 월 30만 원 실적을 채우면 매월 13,000원이 자동 차감되어 실제 차주가 부담하는 요금은 월 8,900원으로 내려앉습니다. 이를 36개월로 환산하면 총 납부 금액은 약 32만 원에 불과합니다. 이는 온라인 다이렉트 최저가로 4본을 일시불 구매하고 공임과 얼라인먼트를 별도로 지불하는 비용(약 66만 원)의 절반 이하 수준으로 떨어지는 파격적인 결과입니다. 타이어계산기는 이러한 제휴 할인 요율을 실시간 역산하여 사용자에게 가장 유리한 최저가 포인트를 제시합니다.
+            </p>
+
+            <h3>4. 2026년 타이어 테크 트렌드: 전기차 전용(EV) 타이어와 AI 마모 진단 기술</h3>
+            <p>
+                2026년 현재 국내외 자동차 시장은 현대 아이오닉, 기아 EV6 및 EV9, 테슬라 모델Y와 모델3 등 순수 전기차가 도로 위의 주류로 확고히 안착한 상황입니다. 이에 발맞추어 타이어 제조업계의 기술 개발 또한 내연기관용에서 전기차 전용 타이어로 중심축이 급격히 이동하였습니다. 한국타이어의 아이온(iON), 금호타이어의 이노뷔(EnnoV), 넥센타이어의 로디안 GTX EV 라인업이 대표적입니다.
+            </p>
+            <p>
+                전기차 전용 타이어가 일반 타이어와 본질적으로 차별화되는 첫 번째 요인은 고하중 지지 성능(HL, High Load 등급)입니다. 전기차는 대용량 배터리 팩으로 인해 동급 내연기관 차량보다 300kg에서 500kg 이상 무겁기 때문에 타이어가 받는 수직 하중이 극심합니다. 이를 견디기 위해 사이드월 내부의 카카스 플라이 보강 벨트를 강철 소재와 고강도 아라미드 섬유로 하이브리드 보강합니다. 
+            </p>
+            <p>
+                두 번째 차별점은 소음 억제 기술입니다. 내연기관 특유의 엔진 구동음이 사라지면서 고속 주행 시 실내로 유입되는 소음의 70퍼센트 이상이 타이어 트레드와 아스팔트 노면의 마찰에서 발생하는 로드 노이즈입니다. 이를 흡음하기 위해 타이어 내부 휠 테두리면에 특수 폴리우레탄 폼(흡음재)을 부착하여 특정 주파수의 공명음을 5데시벨 이상 획기적으로 감쇄시킵니다. 세 번째는 초반 즉각적인 최대토크 전달로 인한 이상 마모 현상을 억제하기 위해 실리카 고분자 컴파운드 배합을 대폭 강화한 점입니다. 따라서 전기차 오너라면 타이어계산기에서 반드시 EV 전용 등급을 체크하여 견적을 산출해야만 안전과 마일리지 수명을 온전히 확보할 수 있습니다.
+            </p>
+
+            <h3>5. 휠얼라인먼트와 고속 진동 밸런스의 과학적 중요성</h3>
+            <p>
+                새로운 타이어를 아무리 비싼 프리미엄 등급으로 교체하더라도 장착 과정에서 휠밸런스와 휠얼라인먼트 정렬이 올바르게 이루어지지 않는다면 수십만 원의 타이어는 채 1만km도 달리지 못하고 편마모로 인해 폐기될 수 있습니다. 휠밸런스는 휠과 타이어 결합체의 회전 중심 질량 분포를 균일하게 맞추는 공정으로, 밸런스가 어긋날 경우 시속 80km~110km 구간에서 운전대가 좌우로 극심하게 떨리는 현상이 발생합니다. 
+            </p>
+            <p>
+                반면 휠얼라인먼트는 차체와 바퀴가 이루는 기하학적 각도(토인, 캠버, 캐스터)를 제조사의 고유 팩토리 규격으로 재정렬하는 매우 정밀한 하체 튜닝 작업입니다. 차량이 방지턱을 강하게 넘거나 포트홀을 충격할 때 하체 로워암과 타이로드 엔드가 미세하게 변형되어 바퀴가 안쪽이나 바깥쪽으로 틀어지게 됩니다. 캠버 각도가 마이너스로 누우면 타이어 안쪽 트레드만 급격히 닳아 없어지는 내측 편마모가 발생하며, 이는 빗길 고속 주행 시 배수 능력을 완전히 상실케 하여 대형 수막사고를 유발하는 치명적인 원인이 됩니다. 타이어 렌탈 요금제에 정기 휠얼라인먼트 바우처가 포함되어 있다는 점은 단순한 금전적 절약을 넘어 안전 측면에서도 지극히 높은 점수를 받는 이유입니다.
+            </p>
+
+            <h3>6. 전국 주요 도시별 타이어 교체 성지 좌표 탐색 요령</h3>
+            <p>
+                인터넷 커뮤니티에서 통용되는 타이어 성지란 도매 직유통 라인을 구축하여 중간 유통 마진을 덜어내고 공임비 거품을 제거하여 전국 최저가 수준으로 제품을 공급하는 전문점을 뜻합니다. 수도권의 경우 서울 강남 도곡, 송파 문정, 강서 가양, 경기 수원 권선, 용인 기흥, 성남 분당, 고양 일산, 인천 서구 가좌 등이 대표적인 물류 집결지입니다. 영남권에서는 부산 사상, 해운대 반여, 대구 수성, 울산 삼산, 창원 의창 등이 전통적인 장착 성지 허브로 손꼽힙니다.
+            </p>
+            <p>
+                이들 전문 성지 매장을 방문할 때 사전에 타이어계산기로 규격별 도매 예상가를 미리 파악하고 가면 일부 비양심적인 매장에서 시도하는 휠 부식 핑계의 휠 교체 유도, 과도한 추가 공임비 청구(TPMS 센서 이식비 개당 1만 원 요구 등)를 능동적으로 차단할 수 있습니다. 정상적인 전문 매장이라면 사전에 모든 공임 내역(TPMS 포함 여부, 밸런스 포함 여부, 폐타이어 처리비)을 투명하게 고지하므로, 계산기 리포트 결과를 바탕으로 견적 상담을 진행하는 것이 현명한 소비자의 첫걸음입니다.
+            </p>
+
+            <h3>7. 공인된 신뢰성 있는 외부 데이터 및 권위 있는 레퍼런스 센터</h3>
+            <p>
+                정확하고 왜곡 없는 타이어 규격과 공임, 법적 소비자 보호 규정을 교차 검증할 수 있는 공신력 있는 공식 외부 전문 기관 사이트를 안내합니다. 아래 링크를 통해 최신 제도와 안전 기준을 함께 확인해 보시기 바랍니다.
+            </p>
+
+            <div class="external-links-wrap">
+                <a href="https://directvcheckq.koreahankang.com" class="ext-link-card" target="_blank" rel="noopener">
+                    타이어 시세 및 규격 기술 데이터베이스 센터 (reliabledone.com)
+                </a>
+                <a href="https://namu.wiki/w/%ED%83%80%EC%9D%B4%EC%96%B4" class="ext-link-card" target="_blank" rel="noopener">
+                    나무위키 타이어 종합 기술 및 역사 문서
+                </a>
+                <a href="https://www.kotsa.or.kr" class="ext-link-card" target="_blank" rel="noopener">
+                    한국교통안전공단 자동차 안전도 검사 및 타이어 법적 기준
+                </a>
+            </div>
+        </article>
+
+        <!-- Comprehensive FAQ Section with Accordion -->
+        <section id="faq-section" class="card">
+            <div class="card-header">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+                <p>타이어계산기 사용법과 교체, 렌탈 시 가장 빈번하게 문의하시는 주요 사항에 대한 전문 엔지니어의 명쾌한 답변입니다.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q1. 타이어 교체 주기를 판단하는 가장 정확한 기준은 무엇인가요?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            타이어 수명은 마모 한계선과 사용 연한 두 가지를 동시에 점검해야 합니다. 트레드 그루브 안쪽에 위치한 돌출된 마모 한계선(1.6mm)까지 트레드가 닳았다면 즉시 교체해야 합니다. 100원짜리 동전을 트레드 홈에 거꾸로 끼웠을 때 이순신 장군의 감투가 다 보인다면 이미 제동 능력이 절반 이하로 떨어진 위험 상태입니다. 또한 마모가 많이 남아있더라도 생산 주차(DOT) 기준 5년이 경과하면 고무의 유분이 빠져나가 경화 균열이 발생하므로 안전을 위해 교체를 권장합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q2. 4본 전체 교체가 아닌 2본만 교체할 때 새 타이어는 전륜과 후륜 중 어디에 끼워야 하나요?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            자동차 공학적으로 새 타이어 2본은 전륜구동, 후륜구동 방식과 무관하게 후륜(뒷바퀴)에 장착하는 것이 안전상 훨씬 유리합니다. 전륜에 새 타이어를 끼우고 마모된 타이어를 후륜에 두면 빗길 코너링 시 뒷바퀴 접지력이 먼저 상실되면서 차량 뒤쪽이 돌아버리는 오버스티어(Oversteer) 현상이 발생하여 일반 운전자가 제어할 수 없는 치명적인 스핀 사고로 이어질 수 있기 때문입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q3. 타이어 렌탈 이용 중 차량을 중고차로 매매하게 되면 어떻게 처리되나요?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            차량 매각 시 타이어 렌탈 계약을 처리하는 방법은 크게 두 가지입니다. 첫 번째는 잔여 개월 수의 렌탈료를 일시 완납하여 타이어 소유권을 완전히 양도받은 뒤 차량과 함께 통째로 매각하는 방식입니다. 두 번째는 중고차를 인수하는 새로운 구매자에게 타이어 렌탈 계약 승계 절차를 진행하는 것입니다. 만약 잔여 기간이 얼마 남지 않았다면 완납 정산이 행정상 가장 간편합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q4. 런플랫(Run-Flat) 타이어 장착 차량에 일반 컴포트 타이어를 장착해도 상관없나요?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            BMW나 벤츠 등 수입차에 출고용(OE)으로 장착된 런플랫 타이어 대신 일반 컴포트 사계절 타이어를 장착하는 것은 전적으로 가능하며, 오히려 국내 도로 환경에서는 승차감과 정숙성, 가격 면에서 월등한 만족도를 제공합니다. 다만 런플랫 타이어가 빠진 만큼 트렁크에 비상용 펑크 수리 키트(실란트 및 컴프레서)가 구비되어 있는지 확인하고 보험사 긴급출동 서비스를 항시 인지하고 계셔야 합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q5. 넥센 엔페라, 한국 벤투스, 금호 마제스티 중 어떤 브랜드를 선택해야 할까요?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            국산 3사의 프리미엄 컴포트 라인업은 성능상 매우 균일하게 상향 평준화되어 있습니다. 부드러운 승차감과 극도의 정숙성을 최우선한다면 금호 마제스티9 솔루스 TA91을, 고속 주행 시 쫀득한 핸들링과 코너링 지지력을 원한다면 한국타이어 벤투스 S2 AS를 추천합니다. 한편 우수한 마일리지 수명과 전국 렌탈망을 통한 가성비와 무상 파손 케어를 원하신다면 넥센 엔페라 슈프림이 가장 실속 있는 선택지로 평가받습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lead & Contact Consultation Request Form -->
+        <section class="card">
+            <div class="card-header">
+                <h2>전국 타이어 안심 교체 및 다이렉트 렌탈 1:1 전문 컨설팅</h2>
+                <p>계산기 견적 결과를 바탕으로 가까운 장착점 예약, 12개월 무약정 프로모션 코드 발급, 제휴카드 추가 캐시백 혜택 상담을 원스톱으로 지원합니다.</p>
+            </div>
+
+            <form id="consultForm" onsubmit="event.preventDefault(); alert('상담 신청이 정상 접수되었습니다. 전문 매니저가 빠른 시간 내에 연락드리겠습니다.');">
+                <div class="form-row form-row-3">
+                    <div class="input-group">
+                        <label for="clientName">고객 성함</label>
+                        <input type="text" id="clientName" class="input-control" placeholder="홍길동" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="clientTel">연락처 휴대전화번호</label>
+                        <input type="tel" id="clientTel" class="input-control" placeholder="010-1234-5678" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="clientRegion">희망 장착 희망 지역</label>
+                        <select id="clientRegion" class="input-control" required>
+                            <option value="seoul">서울특별시 전역</option>
+                            <option value="gyeonggi">경기도 (수원, 성남, 고양, 용인 등)</option>
+                            <option value="incheon">인천광역시 전역</option>
+                            <option value="busan">부산광역시 및 경남권</option>
+                            <option value="daegu">대구광역시 및 경북권</option>
+                            <option value="daejeon">대전광역시 및 충청권</option>
+                            <option value="gwangju">광주광역시 및 호남권</option>
+                            <option value="gangwon">강원특별자치도 전역</option>
+                            <option value="jeju">제주특별자치도</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group" style="margin-bottom: 20px;">
+                    <label for="clientMessage">차량 모델명 및 문의 세부 사항 (선택 입력)</label>
+                    <input type="text" id="clientMessage" class="input-control" placeholder="예: 2023년식 쏘렌토 하이브리드 19인치 렌탈 혜택 문의">
+                </div>
+                <button type="submit" class="calc-btn" style="background-color: var(--secondary);">타이어 최저가 렌탈 및 맞춤 장착 상담 신청하기</button>
+            </form>
+        </section>
+
+        <!-- Related Autocomplete Keywords & Exploration -->
+        <section class="card">
+            <div class="card-header">
+                <h2>함께 많이 찾는 연관 검색어 및 인기 포털 탐색 키워드</h2>
+                <p>네이버, 다음, 구글, 토스, 카카오 등 주요 검색 엔진 및 AI 서비스(ChatGPT, 제미나이)에서 가장 활발하게 유입되는 질의어 모음입니다.</p>
+            </div>
+            <div class="tag-cloud">
+                <a href="#calculator-app" class="tag-item">타이어계산기 어플</a>
+                <a href="#calculator-app" class="tag-item">타이어 인치업 계산기</a>
+                <a href="#price-table" class="tag-item">넥센타이어 렌탈 혜택</a>
+                <a href="#price-table" class="tag-item">한국타이어 다이렉트 가격표</a>
+                <a href="#price-table" class="tag-item">금호타이어 교체 비용 최저가</a>
+                <a href="#info-center" class="tag-item">보배드림 타이어 추천 성지</a>
+                <a href="#info-center" class="tag-item">에펨코리아 타이어 렌탈 후기</a>
+                <a href="#info-center" class="tag-item">디시 자동차 갤러리 공임나라 팁</a>
+                <a href="#calculator-app" class="tag-item">전기차 타이어 교체 주기</a>
+                <a href="#calculator-app" class="tag-item">휠얼라인먼트 비용 얼마</a>
+                <a href="#price-table" class="tag-item">그랜저 19인치 타이어 가격</a>
+                <a href="#price-table" class="tag-item">쏘렌토 19인치 타이어 렌탈 요금제</a>
+                <a href="#price-table" class="tag-item">아반떼 16인치 가성비 타이어 순위</a>
+                <a href="#price-table" class="tag-item">카니발 타이어 추천 컴포트</a>
+                <a href="#price-table" class="tag-item">제네시스 G80 미쉐린 교체 견적</a>
+                <a href="#info-center" class="tag-item">타이어 위약금 환불 계산법</a>
+                <a href="#calculator-app" class="tag-item">타이어 렌탈 무약정 12개월</a>
+                <a href="#calculator-app" class="tag-item">제휴카드 청구할인 현금지원 사은품</a>
+                <a href="#info-center" class="tag-item">타이어 제조일자 보는법</a>
+                <a href="#info-center" class="tag-item">트레드웨어 수명 계산</a>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+  
+  
+
+    <!-- Interactive JavaScript Engine -->
+    <script>
+        function calculateTireQuote() {
+            const width = parseInt(document.getElementById('tireWidth').value, 10);
+            const aspect = parseInt(document.getElementById('tireAspect').value, 10);
+            const wheel = parseInt(document.getElementById('tireWheel').value, 10);
+            const brand = document.getElementById('tireBrand').value;
+            const count = parseInt(document.getElementById('tireCount').value, 10);
+            const cardDiscount = parseInt(document.getElementById('cardDiscount').value, 10);
+
+            // Base price algorithm per tire based on wheel diameter and segment
+            let baseSinglePrice = 75000;
+
+            // Diameter weighting
+            if (wheel === 15) baseSinglePrice += 0;
+            else if (wheel === 16) baseSinglePrice += 20000;
+            else if (wheel === 17) baseSinglePrice += 45000;
+            else if (wheel === 18) baseSinglePrice += 75000;
+            else if (wheel === 19) baseSinglePrice += 110000;
+            else if (wheel === 20) baseSinglePrice += 150000;
+            else if (wheel === 21) baseSinglePrice += 210000;
+
+            // Width weighting
+            baseSinglePrice += (width - 195) * 600;
+
+            // Brand & Technology factor
+            let multiplier = 1.0;
+            if (brand === 'standard') multiplier = 0.85;
+            else if (brand === 'premium') multiplier = 1.15;
+            else if (brand === 'suv') multiplier = 1.20;
+            else if (brand === 'import') multiplier = 1.55;
+            else if (brand === 'ev') multiplier = 1.45;
+
+            const singleTireNet = Math.round((baseSinglePrice * multiplier) / 1000) * 1000;
+            
+            // Total direct buy cost = (Tire net + 20,000 fitting fee) * count + 60,000 alignment (for 4 tires)
+            let totalBuy = (singleTireNet + 20000) * count;
+            if (count === 4) {
+                totalBuy += 60000; // Alignment fee included
+            }
+
+            // Monthly rental fee algorithm (36-month subscription baseline)
+            // Includes free alignment, puncture repair, and free rotation
+            let monthlyBase = Math.round((totalBuy * 1.12 / 36) / 100) * 100;
+            if (monthlyBase < 2900) monthlyBase = 2900;
+
+            // Final customer payment with credit card promo discount
+            let monthlyCard = monthlyBase - cardDiscount;
+            if (monthlyCard < 0) monthlyCard = 0;
+
+            // Care value simulation
+            let careValueText = (count === 4) ? "180,000 원 상당" : "80,000 원 상당";
+
+            // Update UI
+            document.getElementById('resTotalBuy').innerText = totalBuy.toLocaleString() + ' 원';
+            document.getElementById('resBaseRental').innerText = monthlyBase.toLocaleString() + ' 원';
+            document.getElementById('resCardRental').innerText = monthlyCard.toLocaleString() + ' 원';
+            document.getElementById('resCareValue').innerText = careValueText;
+
+            let recommendation = "선택 규격(" + width + "/" + aspect + "R" + wheel + ", " + count + "본) 기준, ";
+            if (monthlyCard < 10000 && count === 4) {
+                recommendation += "제휴카드 청구할인을 적용한 36개월 렌탈 요금제가 정기 무상 얼라인먼트 및 방문 점검 혜택을 고려할 때 일시불 구매 대비 현격한 경제적 우위를 제공합니다.";
+            } else {
+                recommendation += "연간 주행거리가 짧고 단기적 지출 종결을 원하신다면 인터넷 다이렉트 최저가 일시불 구매 후 공임나라 연계 장착이 실속 있는 방안이 될 수 있습니다.";
+            }
+            document.getElementById('resSummaryNote').innerText = recommendation;
+        }
+
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const isOpen = faqItem.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                const icon = item.querySelector('.faq-toggle-icon');
+                if (icon) icon.innerText = '+';
+            });
+
+            // Open clicked item if it was not open
+            if (!isOpen) {
+                faqItem.classList.add('active');
+                const icon = faqItem.querySelector('.faq-toggle-icon');
+                if (icon) icon.innerText = '-';
+            }
+        }
+
+        // Initialize calculation on DOM Load
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateTireQuote();
+        });
+    </script>
+  
